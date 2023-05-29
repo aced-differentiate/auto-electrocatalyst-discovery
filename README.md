@@ -1,6 +1,6 @@
 # A Multiobjective Closed-loop Approach Towards Autonomous Discovery of Electrocatalysts for Nitrogen Reduction
 
-Data and scripts in support of the publication "A Multiobjective Closed-loop Approach Towards Autonomous Discovery of Electrocatalysts for Nitrogen Reduction", Kavalsky et al., (2022). A preprint will be available on ChemRxiv.
+Data and scripts in support of the publication "A Multiobjective Closed-loop Approach Towards Autonomous Discovery of Electrocatalysts for Nitrogen Reduction", Kavalsky et al., (2023). DOI: [10.26434/chemrxiv-2023-vmbt3-v2](https://doi.org/10.26434/chemrxiv-2023-vmbt3-v2).
 
 The repository is organized as follows:
 
