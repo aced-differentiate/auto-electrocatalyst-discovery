@@ -39,7 +39,7 @@ def volcano(dG):
     return np.minimum(strong_leg, weak_leg)
 
 
-plt.style.use("seaborn-ticks")
+plt.style.use("seaborn-v0_8-ticks")
 rcParams.update(
     {
         "font.family": "sans-serif",
