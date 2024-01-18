@@ -3,9 +3,8 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
-from sklearn.ensemble import RandomForestRegressor as SklearnRandomForestRegressor
 
-plt.style.use("seaborn-ticks")
+plt.style.use("seaborn-v0_8-ticks")
 rcParams.update(
     {
         "font.family": "sans-serif",
