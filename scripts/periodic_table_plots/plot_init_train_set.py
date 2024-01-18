@@ -1,9 +1,7 @@
 import os
 import json
-import yaml
 from collections import defaultdict
 
-import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors
 from ptplotter import ElementDataPlotter
@@ -41,8 +39,10 @@ with open(ele_data_path, "r") as f:
 init_host_ele = ["Au", "Cu", "Fe", "Ni", "Ru", "Pd"]
 init_dop_ele = ["Fe", "Mo", "Pd", "Pt", "Re", "Ru", "Ni"]
 
+
 def custom_data():
     return defaultdict(custom_data)
+
 
 data = custom_data()
 for elt in elt_data:
@@ -61,6 +61,7 @@ for elt in elt_data:
     else:
         data[elt]["init_dop"] = False
 
+
 def in_ds(elt):
     """Design Space"""
     if elt["full_ds"]:
@@ -68,12 +69,14 @@ def in_ds(elt):
     else:
         return 0
 
+
 def init_host(elt):
-    """   Host Species \n in Initial Training Set"""
+    """Host Species \n in Initial Training Set"""
     if elt["init_host"]:
         return 1
     else:
         return 0
+
 
 def init_dop(elt):
     """Dopant Species in Initial Training Set"""
@@ -82,41 +85,46 @@ def init_dop(elt):
     else:
         return 0
 
+
 cm = matplotlib.colors.LinearSegmentedColormap.from_list("", ["grey", "blue"])
 
 TMs = [
-#        "Sc",
-        "Ti",
-        "V",
-        "Cr",
-#        "Mn",
-        "Fe",
-        "Co",
-        "Ni",
-        "Cu",
-#        "Zn",
-#        "Y",
-        "Zr",
-        "Nb",
-        "Mo",
-#        "Tc",
-        "Ru",
-        "Rh",
-        "Pd",
-        "Ag",
-#        "Cd",
-        "Hf",
-        "Ta",
-        "W",
-        "Re",
-        "Os",
-        "Ir",
-        "Pt",
-        "Au",
-
-        ]
+    #        "Sc",
+    "Ti",
+    "V",
+    "Cr",
+    #        "Mn",
+    "Fe",
+    "Co",
+    "Ni",
+    "Cu",
+    #        "Zn",
+    #        "Y",
+    "Zr",
+    "Nb",
+    "Mo",
+    #        "Tc",
+    "Ru",
+    "Rh",
+    "Pd",
+    "Ag",
+    #        "Cd",
+    "Hf",
+    "Ta",
+    "W",
+    "Re",
+    "Os",
+    "Ir",
+    "Pt",
+    "Au",
+]
 
 epd = ElementDataPlotter(data=data, elements=TMs)
-epd.ptable([init_host, init_dop], colorbars=False, cmaps=[cm, cm], font={"color": "white", "size": "x-large"}) 
+epd.ptable(
+    [init_host, init_dop],
+    colorbars=False,
+    cmaps=[cm, cm],
+    font={"color": "white", "size": "x-large"},
+)
 plt.savefig("INITIAL_TRAINING_SET.png", bbox_inches="tight", dpi=200)
 plt.show()
