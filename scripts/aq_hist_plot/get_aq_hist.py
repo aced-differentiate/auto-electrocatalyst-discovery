@@ -1,15 +1,8 @@
 import os
-from typing import Sequence
 
 import numpy as np
-import ase.db
-from pypif import pif
-from sl_driver import get_binding_energy
-from sl_driver import pif_to_atoms
 from sklearn.ensemble import RandomForestRegressor as SklearnRandomForestRegressor
 from autocat.learning.sequential import SequentialLearner
-from autocat.learning.sequential import calculate_hhi_scores
-from autocat.learning.sequential import calculate_segregation_energy_scores
 
 
 class RandomForestRegressor(SklearnRandomForestRegressor):
@@ -59,6 +52,6 @@ max_aq_hist = np.array(max_aq_hist)
 
 
 # save arrays to disk
-#np.savetxt("AQ_HIST.txt", aq_hist[:-1])
+np.savetxt("AQ_HIST.txt", aq_hist[:-1])
 np.savetxt("MAX_AQ_HIST.txt", max_aq_hist[:-1])
 np.savetxt("UNC_CAND_HIST.txt", unc_cand_hist[:-1])
