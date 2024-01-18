@@ -4,15 +4,10 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
-import umap
-from matminer.featurizers.composition import ElementProperty
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.preprocessing import StandardScaler
 from adjustText import adjust_text
 
 from autocat.learning.sequential import SequentialLearner
-from autocat.learning.predictors import Predictor
-from autocat.learning.featurizers import Featurizer
 
 thisdir = os.path.dirname(os.path.abspath(__file__))
 sl_data_path = os.path.join(thisdir, "..", "..", "data", "acsl.json")
@@ -29,7 +24,7 @@ CANDIDATES_TO_LABEL = [
 
 embedding = np.loadtxt("L1_EMBEDDING.txt")
 
-plt.style.use("seaborn-ticks")
+plt.style.use("seaborn-v0_8-ticks")
 rcParams.update(
     {
         "font.family": "sans-serif",
@@ -100,7 +95,7 @@ ax.scatter(
 ax.set_xlabel("UMAP-1")
 ax.set_ylabel("UMAP-2")
 
-norm = mpl.colors.Normalize(vmin=1, vmax=sl.iteration_count-1)
+norm = mpl.colors.Normalize(vmin=1, vmax=sl.iteration_count - 1)
 fig.colorbar(
     mpl.cm.ScalarMappable(norm=norm, cmap=cmap), ax=ax, label="Iteration Count"
 )
@@ -130,5 +125,5 @@ adjust_text(
     arrowprops=dict(arrowstyle="-|>", color="k", lw=1.5),
 )
 
-fig.savefig(f"UMAP.png", bbox_inches="tight", dpi=200)
-#plt.show()
+fig.savefig("UMAP.png", bbox_inches="tight", dpi=200)
+# plt.show()
