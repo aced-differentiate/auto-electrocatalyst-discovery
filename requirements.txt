@@ -3,3 +3,4 @@ autocat==2022.8.5
 umap-learn==0.5.3
 pypif==2.1.2
 adjusttext==0.7.3
+periodic-table-plotter @ git+https://github.com/lancekavalsky/periodic-table-plotter.git
