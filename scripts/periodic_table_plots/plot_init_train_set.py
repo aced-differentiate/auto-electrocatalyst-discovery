@@ -8,7 +8,7 @@ from ptplotter import ElementDataPlotter
 from ptplotter import elt_data
 from matplotlib import rcParams
 
-plt.style.use("seaborn-ticks")
+plt.style.use("seaborn-v0_8-ticks")
 rcParams.update(
     {
         "font.family": "sans-serif",
