@@ -47,6 +47,14 @@ The repository is organized as follows:
 
         If these scripts are run as-is, will reproduce Figure 4 from the paper.
 
+    * [obj_space_filter_plot](scripts/obj_filter_hist_plot/)
+
+        * `extract_obj_space_hist.py`: Extracts the HHI, Segregation Energies, and $\Delta G_{\mathrm{N}}$ of both the systems in the initial training set as well as candidates as a function of SL iteration into text files.
+
+        * `make_obj_filter_hist_plot.py`: Script to generate a plot of Normalized HHI against Segregation energy with distance from volcano peak color-coded.
+
+        If these scripts are run as-is, will reproduce Figure S1 from the paper.
+
     * [rank_score_plot](scripts/rank_score_plot/)
 
         * `get_ranking.py`: Calculates the partial scores ($c_j^{\mathrm{active}}$, $A_j$, $C_j$) and total ranking scores ($RS_j$) for all candidates and extracts the data into a text file
