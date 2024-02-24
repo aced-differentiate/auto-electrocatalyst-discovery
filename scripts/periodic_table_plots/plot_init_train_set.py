@@ -4,9 +4,9 @@ from collections import defaultdict
 
 import matplotlib.pyplot as plt
 import matplotlib.colors
+from matplotlib import rcParams
 from ptplotter import ElementDataPlotter
 from ptplotter import elt_data
-from matplotlib import rcParams
 
 plt.style.use("seaborn-v0_8-ticks")
 rcParams.update(
@@ -71,7 +71,7 @@ def in_ds(elt):
 
 
 def init_host(elt):
-    """Host Species \n in Initial Training Set"""
+    """Host Species\nin Initial Training Set"""
     if elt["init_host"]:
         return 1
     else:
@@ -79,7 +79,7 @@ def init_host(elt):
 
 
 def init_dop(elt):
-    """Dopant Species in Initial Training Set"""
+    """Dopant Species\nin Initial Training Set"""
     if elt["init_dop"]:
         return 1
     else:
