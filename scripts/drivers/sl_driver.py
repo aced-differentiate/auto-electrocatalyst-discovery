@@ -297,6 +297,3 @@ def run_sequential(
         )
     learner.write_json_to_disk(write_location=basedir, json_name="acsl.json")
 
-
-if __name__ == "__main__":
-    run_sequential()

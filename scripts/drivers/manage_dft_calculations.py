@@ -692,9 +692,15 @@ def manage_calculations(
 
 
 if __name__ == "__main__":
-    basedir = "."
-    adsorbates = ["N"]
-    saa_candidates_json = os.path.join(".", "saa_candidate_systems.json")
-    with open(saa_candidates_json, "r") as fr:
-        saa_systems = json.load(fr)
-    manage_calculations(saa_systems=saa_systems, adsorbates=adsorbates, basedir=basedir)
+    """
+    Example usage of the calculation manager.
+    Use a custom `saa_candidate_systems.json` (a list of SAA systems, see the signature
+    of `manage_calculations`), uncomment the lines below, with suitable values for the
+    base directory and the list of adsorbates.
+    """
+    # basedir = "."
+    # adsorbates = ["N"]
+    # saa_candidates_json = os.path.join(".", "saa_candidate_systems.json")
+    # with open(saa_candidates_json, "r") as fr:
+    #     saa_systems = json.load(fr)
+    # manage_calculations(saa_systems=saa_systems, adsorbates=adsorbates, basedir=basedir)
