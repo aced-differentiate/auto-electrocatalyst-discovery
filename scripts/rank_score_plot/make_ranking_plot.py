@@ -3,9 +3,8 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
-from sklearn.ensemble import RandomForestRegressor as SklearnRandomForestRegressor
 
-plt.style.use("seaborn-ticks")
+plt.style.use("seaborn-v0_8-ticks")
 rcParams.update(
     {
         "font.family": "sans-serif",
@@ -59,7 +58,9 @@ X_axis = np.array(range(0, 2 * len(ranked_SAAs), 2))
 
 fig, ax = plt.subplots(figsize=(8, 6))
 
-ax.bar(X_axis, rs_j, width, label="$RS_j$", color="k", edgecolor="k")
+# plot cube_root(RS_j)
+ax.bar(X_axis, np.cbrt(rs_j), width, label="$RS_j$", color="k", edgecolor="k")
+# plot c_j^active
 ax.bar(
     X_axis + width,
     c_j,
@@ -68,7 +69,9 @@ ax.bar(
     color="#0e9594",
     edgecolor="k",
 )
+# plot S_j
 ax.bar(X_axis + 2 * width, S_j, width, label="$S_j$", color="#f5dfbb", edgecolor="k")
+# plot C_j
 ax.bar(X_axis + 3 * width, C_j, width, label="$C_j$", color="#f2542d", edgecolor="k")
 
 ax.set_xticks(X_axis + 1.5 * width, fmt_SAA_names)

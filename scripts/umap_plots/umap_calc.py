@@ -1,16 +1,11 @@
 import os
 
 import numpy as np
-import matplotlib as mpl
-import matplotlib.pyplot as plt
 import umap
-from matminer.featurizers.composition import ElementProperty
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import StandardScaler
 
 from autocat.learning.sequential import SequentialLearner
-from autocat.learning.predictors import Predictor
-from autocat.learning.featurizers import Featurizer
 
 thisdir = os.path.dirname(os.path.abspath(__file__))
 sl_data_path = os.path.join(thisdir, "..", "..", "data", "acsl.json")

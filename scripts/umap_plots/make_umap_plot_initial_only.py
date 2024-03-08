@@ -4,15 +4,10 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
-import umap
-from matminer.featurizers.composition import ElementProperty
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.preprocessing import StandardScaler
 from adjustText import adjust_text
 
 from autocat.learning.sequential import SequentialLearner
-from autocat.learning.predictors import Predictor
-from autocat.learning.featurizers import Featurizer
 
 thisdir = os.path.dirname(os.path.abspath(__file__))
 sl_data_path = os.path.join(thisdir, "..", "..", "data", "acsl.json")
@@ -34,7 +29,7 @@ CANDIDATES_TO_LABEL = [
 
 embedding = np.loadtxt("L1_EMBEDDING.txt")
 
-plt.style.use("seaborn-ticks")
+plt.style.use("seaborn-v0_8-ticks")
 rcParams.update(
     {
         "font.family": "sans-serif",
@@ -66,7 +61,7 @@ ax.scatter(
 
 
 names = []
-for idx,struct in enumerate(ds.design_space_structures):
+for idx, struct in enumerate(ds.design_space_structures):
     if init_data_mask[idx]:
         formula_dict = struct.symbols.formula.count()
         assert len(formula_dict) == 2
@@ -77,7 +72,7 @@ for idx,struct in enumerate(ds.design_space_structures):
                 host_species = sp
         names.append(dopant_species + "$_1$" + host_species)
 
-remaining_mask =  ~init_data_mask
+remaining_mask = ~init_data_mask
 
 ax.scatter(
     embedding[:, 0][remaining_mask],
@@ -88,6 +83,11 @@ ax.scatter(
 )
 ax.set_xlabel("UMAP-1")
 ax.set_ylabel("UMAP-2")
+
+norm = mpl.colors.Normalize(vmin=1, vmax=sl.iteration_count - 1)
+fig.colorbar(
+    mpl.cm.ScalarMappable(norm=norm, cmap=cmap), ax=ax, label="Iteration Count"
+)
 
 texts = []
 for idx, name in enumerate(names):
@@ -103,7 +103,14 @@ for idx, name in enumerate(names):
             ),
         )
 
-adjust_text(texts, x=embedding[:,0], y=embedding[:,1], ax=ax, force_points=(0.005,0.005), extend_text=(1.4,1.4))
+adjust_text(
+    texts,
+    x=embedding[:, 0],
+    y=embedding[:, 1],
+    ax=ax,
+    force_points=(0.005, 0.005),
+    extend_text=(1.4, 1.4),
+)
 
-fig.savefig(f"UMAP_initial_L1_LABEL.png", bbox_inches="tight", dpi=200)
-#plt.show()
+fig.savefig("UMAP_initial_L1_LABEL.png", bbox_inches="tight", dpi=200)
+# plt.show()

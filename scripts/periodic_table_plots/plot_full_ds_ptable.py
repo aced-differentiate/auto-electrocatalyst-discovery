@@ -1,16 +1,14 @@
 import os
 import json
-import yaml
 from collections import defaultdict
 
-import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors
 from ptplotter import ElementDataPlotter
 from ptplotter import elt_data
 from matplotlib import rcParams
 
-plt.style.use("seaborn-ticks")
+plt.style.use("seaborn-v0_8-ticks")
 rcParams.update(
     {
         "font.family": "sans-serif",
@@ -39,8 +37,10 @@ with open(ele_data_path, "r") as f:
 init_host_ele = ["Au", "Cu", "Fe", "Ni", "Ru", "Pd"]
 init_dop_ele = ["Fe", "Mo", "Pd", "Pt", "Re", "Ru", "Ni"]
 
+
 def custom_data():
     return defaultdict(custom_data)
+
 
 data = custom_data()
 for elt in elt_data:
@@ -67,12 +67,14 @@ def in_ds(elt):
     else:
         return 0
 
+
 def init_host(elt):
-    """   Host Species \n in Initial Training Set"""
+    """Host Species \n in Initial Training Set"""
     if elt["init_host"]:
         return 1
     else:
         return 0
+
 
 def init_dop(elt):
     """Dopant Species in Initial Training Set"""
@@ -81,9 +83,17 @@ def init_dop(elt):
     else:
         return 0
 
+
 cm = matplotlib.colors.LinearSegmentedColormap.from_list("", ["tomato", "limegreen"])
 
 epd = ElementDataPlotter(data=data)
-epd.ptable([in_ds], colorbars=False, cmaps=[cm], font={"color": "k", "size": "large"}, elem_labels=True, guide=False) 
+epd.ptable(
+    [in_ds],
+    colorbars=False,
+    cmaps=[cm],
+    font={"color": "k", "size": "large"},
+    elem_labels=True,
+    guide=False,
+)
 plt.savefig("FULL_DESIGN_SPACE.png", bbox_inches="tight", dpi=200)
 plt.show()
